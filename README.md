@@ -6,7 +6,7 @@
 - https://sveltematerialui.com/?ref=madewithsvelte.com
 - https://sveltematerialui.com/INSTALL.md
 
-### svelte-commands
+### npm
 
 - install packages:
 `npm install`
@@ -25,3 +25,9 @@ sudo docker build -t svelte-app .
 
 - run app
 `sudo docker run -it --rm -p8080:8080 svelte-app`
+
+
+### gun
+
+- starting a relay
+`sudo docker run -p 8765:8765 gundb/gun`
