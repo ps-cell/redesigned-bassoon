@@ -5,3 +5,4 @@
 - https://svelte.dev/blog/the-easiest-way-to-get-started
 - https://sveltematerialui.com/?ref=madewithsvelte.com
 - https://sveltematerialui.com/INSTALL.md
+- Command Start Server: npm run dev
