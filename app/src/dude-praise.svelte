@@ -22,7 +22,7 @@
 
 </script>
 
-<Card padded>
+<Card padded style="margin: 50px;">
 	<h1>The Dude abides.</h1>
 	<Button color="#ff3e00" on:click={click} ripple >
 		Praise
