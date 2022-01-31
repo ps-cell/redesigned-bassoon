@@ -14,14 +14,15 @@
 
 </script>
 
-<style type="text/css">
-    body, main { 
+<style lang="css">
+    main { 
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
     }
+
     .bg {
     	height: 100%;
      	margin-left: -30px;
