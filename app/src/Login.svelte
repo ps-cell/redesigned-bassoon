@@ -23,14 +23,7 @@
 </script>
 
 
-<style>
-  .login-card {
-    margin: 0px 500px 0px 500px;
-  }
-</style>
-
-
-<Card padded>
+<Card padded style="margin: 0px 500px 0px 500px;">
   <Textfield
     label="username"
     type="email"
