@@ -8,15 +8,16 @@ export const db = GUN(["http://localhost:8765/gun"])
 // get reference for user; recall user, if previous session is cached
 export const user = db.user().recall({sessionStorage: true})
 
-// prepare writable for username
+// prepare writable for username and login-flag
 export const username = writable('')
+export const loggedIn = writable(false)
 
 // listener for username-changes
-user.get('alias').on( data => username.set(data) )
+user.get('alias').on( (data) => username.set(data) )
 
 // listener for auth-event
 db.on('auth', async(event) => {
 	const _alias = await user.get('alias')
 	username.set(_alias)
-	console.log(`Logged in as ${_alias}`)
+	loggedIn.set(true)
 })

@@ -17,6 +17,7 @@
     "@smui/checkbox": "^6.0.0-beta.13",
     "@smui/form-field": "^6.0.0-beta.13",
     "@smui/layout-grid": "^6.0.0-beta.13",
+    "@smui/menu-surface": "^6.0.0-beta.13",
     "@smui/select": "^6.0.0-beta.13",
     "@tsconfig/svelte": "^2.0.0",
     "rollup": "^2.3.4",

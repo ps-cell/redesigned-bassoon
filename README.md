@@ -36,6 +36,7 @@ sudo docker build -t svelte-app .
 - [development: docker-svelte-https](https://sam.elborai.me/blog/local-svelte-development-with-tls-support)
 - [svelte: getting started](https://svelte.dev/blog/the-easiest-way-to-get-started)
 - [svelte-material-ui: docs](https://sveltematerialui.com/?ref=madewithsvelte.com)
+- [sveltekit: expose to network](https://www.ryanfiller.com/blog/tips/sveltekit-local-network)
 
 
 # blackjack-gun-pun (working title)
