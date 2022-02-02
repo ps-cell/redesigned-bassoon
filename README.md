@@ -15,7 +15,7 @@
 `npm run dev`
 
 - start server w/ TLS:
-`npm run start -- --http2 --cert [CERT] --key [PRIVKEY] --pass [KEY_PASSPHRASE] --host --help`
+`npm run start -- --http2 --cert [CERT] --key [PRIVKEY] --pass [KEY_PASSPHRASE] --host`
 
 
 ### docker
