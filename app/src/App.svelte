@@ -2,6 +2,7 @@
 
 <script lang="ts">
 	import DudeCard from "./dude-praise.svelte"
+	import ShowCase from "./card_showcase.svelte"
 	import Card from '@smui/card'
 	let x = 0
 	let y = 0
@@ -39,5 +40,6 @@
 <main>
 	<div on:mousemove={handleMouse} style = {bg_pos} class="bg" id="bgimg">
 		<DudeCard/>
+		<ShowCase/>
 	</div>
 </main>
