@@ -5,7 +5,6 @@
   import Select, { Option } from '@smui/select';
   import Icon from '@smui/select/icon';
   import Card from '@smui/card';
-  import LayoutGrid, { Cell } from '@smui/layout-grid';
  
   let options = [
     {
@@ -30,6 +29,7 @@
       card.classList.add('rainbow');
     }
   }
+  //placeholder
   function hidecheck(event) {
     return;
   }
@@ -39,8 +39,6 @@
  
   let value = '';
   let valueSuit = '';
-  
-  let sel_check = false;
 
 </script>
 
@@ -88,11 +86,13 @@
       </div>
     </div>
   </Card>
+
   <Card padded style="margin: 50px; display: flex; align-content: space-around;">
     <div id="play_card" class="rainbow" style="display: flex; margin: -10px;">
-      <img src="/resources/deck/{value.toLowerCase()}_of_{valueSuit.toLowerCase(valueSuit)}.png" alt="" style="height: 300px; width:200px ">
+      <img src="/resources/deck/{value.toLowerCase() || '2'}_of_{valueSuit.toLowerCase(valueSuit) || 'hearts'}.png" alt="hidden webcam footage of antons appartement" style="height: 300px; width:200px ">
     </div>
   </Card>
+
 </div>
 
 <style type="text/css">
