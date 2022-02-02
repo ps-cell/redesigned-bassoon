@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="./node_modules/svelte-material-ui/bare.css" />
 
 <script lang="ts">
+<<<<<<< HEAD
 	import DudeCard from "./dude-praise.svelte"
 	import ShowCase from "./card_showcase.svelte"
 	import Card from '@smui/card'
@@ -12,23 +13,41 @@
 		y = parseInt(event.clientY / 100)
 		bg_pos = `background-position: ${x}px ${y}px`
 	}
+=======
+  import Login from "./Login.svelte"
+  import DudeCard from "./dude-praise.svelte"
+  import Card from '@smui/card'
+  let x = 0
+  let y = 0
+  let bg_pos = `background-position: ${x}px ${y}px`
+  function handleMouse(event){
+    x = parseInt(event.clientX / 50)
+    y = parseInt(event.clientY / 50)
+    bg_pos = `background-position: ${x}px ${y}px`
+  }
+>>>>>>> refs/remotes/origin/main
 
 </script>
 
-<style type="text/css">
-    body, main { 
+<style lang="css">
+    main { 
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
     }
+
     .bg {
-    	height: 100%;
-     	margin-left: -30px;
-     	margin-top: -30px;
-     	margin-right: -30px;
-    	align-self: center;
+        height: 100%;
+        margin: -40px -40px 0 -40px;
+        padding-bottom: 500px;
+        /*
+        margin-left: -30px;
+        margin-top: -30px;
+        margin-right: -30px;
+        */
+        align-self: center;
         background-size: 120% auto;
         background-repeat: no-repeat;
         background-image: url("/resources/background.jpg");
@@ -38,8 +57,16 @@
 </style>
 
 <main>
+<<<<<<< HEAD
 	<div on:mousemove={handleMouse} style = {bg_pos} class="bg" id="bgimg">
 		<DudeCard/>
 		<ShowCase/>
 	</div>
 </main>
+=======
+  <div on:mousemove={handleMouse} style = {bg_pos} class="bg" id="bgimg">
+    <DudeCard/>
+    <Login />
+  </div>
+</main>
+>>>>>>> refs/remotes/origin/main
