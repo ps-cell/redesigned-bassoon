@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./node_modules/svelte-material-ui/bare.css" />
 
 <script lang="ts">
-<<<<<<< HEAD
+  import Login from "./Login.svelte"
 	import DudeCard from "./dude-praise.svelte"
 	import ShowCase from "./card_showcase.svelte"
 	import Card from '@smui/card'
@@ -13,19 +13,6 @@
 		y = parseInt(event.clientY / 100)
 		bg_pos = `background-position: ${x}px ${y}px`
 	}
-=======
-  import Login from "./Login.svelte"
-  import DudeCard from "./dude-praise.svelte"
-  import Card from '@smui/card'
-  let x = 0
-  let y = 0
-  let bg_pos = `background-position: ${x}px ${y}px`
-  function handleMouse(event){
-    x = parseInt(event.clientX / 50)
-    y = parseInt(event.clientY / 50)
-    bg_pos = `background-position: ${x}px ${y}px`
-  }
->>>>>>> refs/remotes/origin/main
 
 </script>
 
@@ -57,16 +44,10 @@
 </style>
 
 <main>
-<<<<<<< HEAD
-	<div on:mousemove={handleMouse} style = {bg_pos} class="bg" id="bgimg">
-		<DudeCard/>
-		<ShowCase/>
-	</div>
-</main>
-=======
   <div on:mousemove={handleMouse} style = {bg_pos} class="bg" id="bgimg">
     <DudeCard/>
     <Login />
+    <ShowCase/>
   </div>
 </main>
->>>>>>> refs/remotes/origin/main
+
