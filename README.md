@@ -1,11 +1,6 @@
 # redesigned-bassoon
 ## javascript-based decentralized repository for 3D models with [gun.js](https://github.com/amark/gun) 
 
-### svelte-links
-- https://svelte.dev/blog/the-easiest-way-to-get-started
-- https://sveltematerialui.com/?ref=madewithsvelte.com
-- https://sveltematerialui.com/INSTALL.md
-
 ### npm
 
 - install packages:
@@ -21,6 +16,7 @@
 ### docker
 
 - build image
+
 ```
 cd app/
 sudo docker build -t svelte-app .
@@ -35,19 +31,25 @@ sudo docker build -t svelte-app .
 - starting a relay
 `sudo docker run -p 8765:8765 gundb/gun`
 
+### links
 
-## blackjack-gun-pun (working title)
+- [development: docker-svelte-https](https://sam.elborai.me/blog/local-svelte-development-with-tls-support)
+- [svelte: getting started](https://svelte.dev/blog/the-easiest-way-to-get-started)
+- [svelte-material-ui: docs](https://sveltematerialui.com/?ref=madewithsvelte.com)
+
+
+# blackjack-gun-pun (working title)
 - decentralized blackjack
 - state-syncing with [gun.js](https://github.com/amark/gun)
 - central dealers/tables
 	
 
-### state
+## state
 - basic syncing with gun
 - basic app for testing deployment
 - material design scaffolding for app
 
-### goals
+## goals
 - user interface
 	- design for menu (account info, game selection)
 	- design for game graphics 
@@ -71,7 +73,7 @@ sudo docker build -t svelte-app .
 	- hide secret cards of dealer
 	- permissions (only dealer can edit cards)
 
-### timeline
+## timeline
 **until 06.02.22** 
 
 - prototype basic game
@@ -81,7 +83,7 @@ sudo docker build -t svelte-app .
 	- local
 	- no user management
 
-### feature requests
+## feature requests
 - in-game chat
 - account management
 - more games
