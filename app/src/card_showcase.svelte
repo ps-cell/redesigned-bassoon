@@ -89,7 +89,7 @@
 
   <Card padded style="margin: 50px; display: flex; align-content: space-around;">
     <div id="play_card" class="rainbow" style="display: flex; margin: -10px;">
-      <img src="/resources/deck/{value.toLowerCase() || '2'}_of_{valueSuit.toLowerCase(valueSuit) || 'hearts'}.png" alt="hidden webcam footage of antons appartement" style="height: 300px; width:200px ">
+      <img src="/resources/deck/{value.toLowerCase() || '2'}_of_{valueSuit.toLowerCase() || 'hearts'}.png" alt="hidden webcam footage of antons appartement" style="height: 300px; width:200px ">
     </div>
   </Card>
 

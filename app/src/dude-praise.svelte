@@ -4,7 +4,7 @@
 	import Button from '@smui/button'
 
 	// connect to relay (must be running, see readme)
-	export const gun = Gun(["http://localhost:8765/gun"])
+	export const gun = GUN(["http://localhost:8765/gun"])
 	let count = gun.get("count", (ack) => {})
 	let _clicked = count.val || 0
 

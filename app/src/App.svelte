@@ -9,8 +9,8 @@
 	let y = 0
 	let bg_pos = `background-position: ${x}px ${y}px`
 	function handleMouse(event){
-		x = parseInt(event.clientX / 100)
-		y = parseInt(event.clientY / 100)
+		x = event.clientX / 80
+		y = event.clientY / 80
 		bg_pos = `background-position: ${x}px ${y}px`
 	}
 

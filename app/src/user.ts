@@ -3,10 +3,10 @@ import 'gun/sea'
 import { writable } from 'svelte/store'
 
 // connect to db
-export const db = Gun(["http://localhost:8765/gun"])
+export const db = GUN(["http://localhost:8765/gun"])
 
 // get reference for user; recall user, if previous session is cached
-export const user = db.user().recall({SessionStorage: true})
+export const user = db.user().recall({sessionStorage: true})
 
 // prepare writable for username
 export const username = writable('')
