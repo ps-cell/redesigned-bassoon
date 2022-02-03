@@ -16,7 +16,7 @@ export const loggedIn = writable(false)
 user.get('alias').on( (data) => username.set(data) )
 
 // listener for auth-event
-db.on('auth', async(event) => {
+db.on('auth', async() => {
 	const _alias = await user.get('alias')
 	username.set(_alias)
 	loggedIn.set(true)

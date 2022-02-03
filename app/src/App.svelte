@@ -4,7 +4,6 @@
   import Login from "./Login.svelte"
 	import DudeCard from "./dude-praise.svelte"
 	import ShowCase from "./card_showcase.svelte"
-	import Card from '@smui/card'
 	let x = 0
 	let y = 0
 	let bg_pos = `background-position: ${x}px ${y}px`

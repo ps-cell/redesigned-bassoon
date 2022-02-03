@@ -20,6 +20,7 @@
     "@smui/menu-surface": "^6.0.0-beta.13",
     "@smui/select": "^6.0.0-beta.13",
     "@tsconfig/svelte": "^2.0.0",
+    "@types/lodash": "^4.14.178",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "gun": "^0.2020.1234",
+    "lodash": "^4.17.21",
     "sirv-cli": "^2.0.0",
     "svelte-material-ui": "^6.0.0-beta.13"
   }
