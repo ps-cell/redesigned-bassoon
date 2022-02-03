@@ -4,6 +4,7 @@
   import Login from "./Login.svelte"
 	import DudeCard from "./dude-praise.svelte"
 	import ShowCase from "./card_showcase.svelte"
+  import PlayingCard from "./deckapi/Card.svelte"
 	let x = 0
 	let y = 0
 	let bg_pos = `background-position: ${x}px ${y}px`
@@ -46,6 +47,7 @@
   <div on:mousemove={handleMouse} style = {bg_pos} class="bg" id="bgimg">
     <DudeCard/>
     <Login />
+    <PlayingCard value=1 suit="Diamonds" />
     <ShowCase/>
   </div>
 </main>

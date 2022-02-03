@@ -1,6 +1,6 @@
 <script lang="ts">
   import Card from '@smui/card'
-	import Button from '@smui/button'
+  import Button from '@smui/button'
   import Textfield from '@smui/textfield'
   import MenuSurface from '@smui/menu-surface'
   import LayoutGrid, { Cell } from '@smui/layout-grid'

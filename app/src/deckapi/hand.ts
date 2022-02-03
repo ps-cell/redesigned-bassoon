@@ -4,12 +4,12 @@
  * This class is IMMUTABLE
  */
 
-import { Card } from "./Card";
+import type { PlayingCard } from "./card";
 
 export class Hand {
-  constructor(readonly cards: readonly Card[]) {}
+  constructor(readonly cards: readonly PlayingCard[]) {}
 
-  addCards(...cards: Card[]): Hand {
+  PlayingCard(...cards: PlayingCard[]): Hand {
     return new Hand([...this.cards, ...cards]);
   }
 

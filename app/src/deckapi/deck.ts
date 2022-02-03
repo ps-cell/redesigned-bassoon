@@ -1,8 +1,8 @@
-import { Card, Suit } from "./Card";
+import { PlayingCard, Suit } from "./card";
 import { shuffle } from "lodash";
 
 export class Deck {
-  private cards: Card[] = [];
+  private cards: PlayingCard[] = [];
 
   // Support multiple decks
   constructor(private numDecks = 1) {
@@ -13,16 +13,16 @@ export class Deck {
     this.cards = shuffle(this.cards); // Just use lodash
   }
 
-  drawCard(): Card {
+  drawCard(): PlayingCard {
     if (this.cards.length == 0) {
       throw new Error("Tried to draw card from empty deck");
     }
 
-    return this.cards.shift() as Card; // Guaranteed to return a Card since we throw an Error if array is empty
+    return this.cards.shift() as PlayingCard; // Guaranteed to return a PlayingCard since we throw an Error if array is empty
   }
 
   // Draws a card, resetting the deck beforehands if the Deck is empty
-  safeDrawCard(): Card {
+  safeDrawCard(): PlayingCard {
     if (this.cards.length === 0) {
       this.reset();
     }
@@ -36,10 +36,10 @@ export class Deck {
 
     for (let i = 1; i <= 13; ++i) {
       for (let j = 0; j < this.numDecks; ++j) {
-        this.cards.push(new Card(i, Suit.Clubs));
-        this.cards.push(new Card(i, Suit.Diamonds));
-        this.cards.push(new Card(i, Suit.Hearts));
-        this.cards.push(new Card(i, Suit.Spades));
+        this.cards.push(new PlayingCard(i, Suit.Clubs));
+        this.cards.push(new PlayingCard(i, Suit.Diamonds));
+        this.cards.push(new PlayingCard(i, Suit.Hearts));
+        this.cards.push(new PlayingCard(i, Suit.Spades));
       }
     }
 

@@ -6,7 +6,7 @@ export enum Suit {
   Spades = "spades",
 }
 
-export class Card {
+export class PlayingCard {
   constructor(readonly value: number, readonly suit: Suit) {
     if (value < 1 || value > 13) {
       throw new Error(`Card instantiated with improper value: ${value}`);
@@ -16,13 +16,13 @@ export class Card {
   formatValue(): string {
     switch (this.value) {
       case 1:
-        return "A";
+        return "ace";
       case 11:
-        return "J";
+        return "jack";
       case 12:
-        return "Q";
+        return "queen";
       case 13:
-        return "K";
+        return "king";
       default:
         return `${this.value}`;
     }
