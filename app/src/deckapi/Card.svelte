@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Card from '@smui/card'
   import { PlayingCard, Suit } from "./card"
 
   // props
