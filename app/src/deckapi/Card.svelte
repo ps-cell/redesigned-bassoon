@@ -1,11 +1,13 @@
 <script lang="ts">
   import { PlayingCard, Suit } from "./card"
+  import { writable } from "svelte/store"
 
   // props
-  export let value: string
-  export let suit: string
+  export let value: string = 1
+  export let suit: string = "Hearts"
+  export let card: PlayingCard
 
-  const playingCard: PlayingCard = new PlayingCard(parseInt(value), Suit[suit])
+  const playingCard = card || writeable(new PlayingCard(parseInt(value), Suit[suit]))
 
 </script>
 
@@ -35,4 +37,4 @@
   }
 </style>
 
-<img class="rainbow" src="/resources/deck/{playingCard.formatValue() || '2'}_of_{playingCard.suit.toLowerCase() || 'hearts'}.png" alt="hidden webcam footage of antons appartement">
+<img class="rainbow" src="/resources/deck/{$playingCard.formatValue() || '2'}_of_{$playingCard.suit.toLowerCase() || 'hearts'}.png" alt="hidden webcam footage of antons appartement">

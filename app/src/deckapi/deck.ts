@@ -4,8 +4,13 @@ import { shuffle } from "lodash";
 export class Deck {
   private cards: PlayingCard[] = [];
 
+  private decktype_dict = {
+    deck52: 2,  // 2 is smallest number-card
+    deck32: 7   // 7 is smallest number-card
+  }
+
   // Support multiple decks
-  constructor(private numDecks = 1) {
+  constructor(private decktype = "deck52", private numDecks = 1) {
     this.reset();
   }
 
@@ -34,7 +39,11 @@ export class Deck {
   reset(): void {
     this.cards = [];
 
-    for (let i = 1; i <= 13; ++i) {
+    // determine selected decktype
+    const smallest_value = this.decktype_dict[this.decktype]
+
+    // push number- and facecards
+    for (let i = smallest_value; i <= 13; ++i) {
       for (let j = 0; j < this.numDecks; ++j) {
         this.cards.push(new PlayingCard(i, Suit.Clubs));
         this.cards.push(new PlayingCard(i, Suit.Diamonds));
@@ -42,6 +51,12 @@ export class Deck {
         this.cards.push(new PlayingCard(i, Suit.Spades));
       }
     }
+
+    // push aces
+    this.cards.push(new PlayingCard(1, Suit.Clubs));
+    this.cards.push(new PlayingCard(1, Suit.Diamonds));
+    this.cards.push(new PlayingCard(1, Suit.Hearts));
+    this.cards.push(new PlayingCard(1, Suit.Spades));
 
     this.shuffle();
   }

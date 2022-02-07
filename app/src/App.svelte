@@ -5,14 +5,30 @@
 	import DudeCard from "./dude-praise.svelte"
 	import ShowCase from "./card_showcase.svelte"
   import PlayingCard from "./deckapi/Card.svelte"
+  import { Deck } from "./deckapi/deck.ts"
+  import { writable } from "svelte/store"
 	let x = 0
 	let y = 0
 	let bg_pos = `background-position: ${x}px ${y}px`
+
+  // track mouse-movement f/ moving bg-image
 	function handleMouse(event){
 		x = event.clientX / 80
 		y = event.clientY / 80
 		bg_pos = `background-position: ${x}px ${y}px`
 	}
+
+  // test playingcard-deck
+  let testCard = writable()
+  const cardDeck = new Deck("deck32")
+  async function randomCards() {
+    while (true) {
+      testCard.set(cardDeck.safeDrawCard())
+      await new Promise(r => setTimeout(r, 2000))
+    }
+  }
+
+  randomCards()
 
 </script>
 
@@ -47,7 +63,7 @@
   <div on:mousemove={handleMouse} style = {bg_pos} class="bg" id="bgimg">
     <DudeCard/>
     <Login />
-    <PlayingCard value=1 suit="Diamonds" />
+    <PlayingCard card={testCard} />
     <ShowCase/>
   </div>
 </main>
