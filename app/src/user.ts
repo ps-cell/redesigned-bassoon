@@ -18,6 +18,6 @@ user.get('alias').on( (data) => username.set(data) )
 // listener for auth-event
 db.on('auth', async() => {
 	const _alias = await user.get('alias')
-	username.set(_alias)
+	username.set(_alias as unknown as string)
 	loggedIn.set(true)
 })

@@ -5,7 +5,7 @@
 	import DudeCard from "./dude-praise.svelte"
 	import ShowCase from "./card_showcase.svelte"
   import PlayingCard from "./deckapi/Card.svelte"
-  import { Deck } from "./deckapi/deck.ts"
+  import { Deck } from "./deckapi/deck"
   import { writable } from "svelte/store"
 	let x = 0
 	let y = 0
@@ -33,7 +33,7 @@
 </script>
 
 <style lang="css">
-    main { 
+    main {
         position: fixed;
         top: 0;
         bottom: 0;
@@ -45,11 +45,6 @@
         height: 100%;
         margin: -40px -40px 0 -40px;
         padding-bottom: 500px;
-        /*
-        margin-left: -30px;
-        margin-top: -30px;
-        margin-right: -30px;
-        */
         align-self: center;
         background-size: 120% auto;
         background-repeat: no-repeat;
@@ -60,11 +55,10 @@
 </style>
 
 <main>
-  <div on:mousemove={handleMouse} style = {bg_pos} class="bg" id="bgimg">
+  <div on:mousemove={handleMouse} style={bg_pos} class="bg" id="bgimg">
     <DudeCard/>
     <Login />
     <PlayingCard card={testCard} />
     <ShowCase/>
   </div>
 </main>
-
