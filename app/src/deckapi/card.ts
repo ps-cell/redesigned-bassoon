@@ -1,9 +1,9 @@
 // Enum values are lowercased to match css classes
 export enum Suit {
-  Clubs = "clubs",
   Diamonds = "diamonds",
   Hearts = "hearts",
   Spades = "spades",
+  Clubs = "clubs",
 }
 
 export class PlayingCard {

@@ -1,15 +1,16 @@
 <link rel="stylesheet" href="./node_modules/svelte-material-ui/bare.css" />
 
-<script lang="ts">
+<script lang="typescript">
   import Login from "./Login.svelte"
 	import DudeCard from "./dude-praise.svelte"
 	import ShowCase from "./card_showcase.svelte"
   import PlayingCard from "./deckapi/Card.svelte"
   import { Deck } from "./deckapi/deck"
+  import { Player, Game } from "./knack"
   import { writable } from "svelte/store"
-	let x = 0
-	let y = 0
-	let bg_pos = `background-position: ${x}px ${y}px`
+	let x: number = 0
+	let y: number = 0
+	let bg_pos: string = `background-position: ${x}px ${y}px`
 
   // track mouse-movement f/ moving bg-image
 	function handleMouse(event){
@@ -29,6 +30,17 @@
   }
 
   randomCards()
+
+  // test handvalue-calculation
+  const players: Player[] = [
+    new Player("p1"), new Player("p2"), new Player("p3")
+  ]
+  const game: Game = new Game(players)
+  game.setup()
+  console.log(game)
+  console.log(game.players[0].hand)
+  console.log(Game.calcHandValue(game.players[0].hand))
+
 
 </script>
 

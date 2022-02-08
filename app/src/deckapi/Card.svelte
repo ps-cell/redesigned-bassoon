@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import { PlayingCard, Suit } from "./card"
   import { writable } from "svelte/store"
 

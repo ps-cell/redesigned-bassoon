@@ -1,6 +1,6 @@
-import { PlayingCard, Suit } from "./deckapi/card"
+import type { PlayingCard, Suit } from "./deckapi/card"
 import { Deck } from "./deckapi/deck"
-import { user } from "./user"
+//import { user } from "./user"
 //import Math;
 
 
@@ -23,53 +23,6 @@ interface Score {
   type?:number
 }
 
-function calcHandValue(hand: PlayingCard[]): Score {
-  if (hand[0].value === hand[1].value && hand[1].value === hand[2].value) {
-    if (hand[0].value === 1) {
-      return { value : 33, suit : null } // Triple aces
-    } else {
-      return {value : 31, suit : null, type : hand[0].value } // triplet
-    }
-  }
-  // object for counting card values
-  let suitvalues : object = {
-    "clubs" : 0,
-    "spades" : 0,
-    "hearts" : 0,
-    "diamonds" : 0,
-  }
-  // add card values to suit
-  for (const card of hand) {
-    if (card.value > 10) {
-      suitvalues[card.suit] += 10
-    } else {
-      suitvalues[card.suit] += card.value === 1 ? 11 : card.value
-    }
-  }
-  // pick and return most valued suit
-  let maxval : number = 0
-  let maxsut : Suit
-  for (const suit in suitvalues) {
-    if (maxval < suitvalues[suit]) {
-      // if maxval is 31, set it to 32 (knack-point)
-      maxval = suitvalues[suit] === 31 ? 32 : suitvalues[suit]
-      maxsut = Suit[suit]
-    }
-  }
-  return {
-    value : maxval,
-    suit : maxsut
-  }
-}
-
-function getScores(players: Player[]): [Score, Player][] {
-  let scores: [Score, Player][]
-  for (const player of players) {
-    scores.push([calcHandValue(player.hand), player])
-  }
-  return scores
-}
-
 export class Player {
   private _hand: PlayingCard[] = []
   public knack: boolean = false
@@ -79,7 +32,7 @@ export class Player {
 
   set hand(newHand: PlayingCard[]) {
     this._hand = newHand
-    if (calcHandValue(this._hand).value >= 32) {
+    if (Game.calcHandValue(this._hand).value >= 32) {
       // knack-point is 32 (handled in score-calculation)
       this.knack = true
     }
@@ -94,16 +47,58 @@ export class Game {
   readonly deck: Deck = new Deck("deck32")
   public tableCards: PlayingCard[] = []
 
-  reset(): void {
-    this.deck.reset()
-  }
-
   constructor(readonly players: Player[]) {
     if (this.players.length > 9 || this.players.length === 0) {
       throw "Only between 2 and 9 players are allowed!"
     }
-    this.reset()
   }
+  public static calcHandValue(hand: PlayingCard[]): Score {
+    if (hand[0].value === hand[1].value && hand[1].value === hand[2].value) {
+      if (hand[0].value === 1) {
+        return { value : 33, suit : null } // Triple aces
+      } else {
+        return {value : 31, suit : null, type : hand[0].value } // triplet
+      }
+    }
+    // object for counting card values
+    let suitvalues : object = {
+      "clubs" : 0,
+      "spades" : 0,
+      "hearts" : 0,
+      "diamonds" : 0,
+    }
+    // add card values to suit
+    for (const card of hand) {
+      if (card.value > 10) {
+        suitvalues[card.suit] += 10
+      } else {
+        suitvalues[card.suit] += card.value === 1 ? 11 : card.value
+      }
+    }
+    // pick and return most valued suit
+    let maxval : number = 0
+    let maxsut : string
+    for (const suit in suitvalues) {
+      if (maxval < suitvalues[suit]) {
+        // if maxval is 31, set it to 32 (knack-point)
+        maxval = suitvalues[suit] === 31 ? 32 : suitvalues[suit]
+        maxsut = suit
+      }
+    }
+    return {
+      value : maxval,
+      suit : maxsut
+    }
+  }
+
+  public static getScores(players: Player[]): [Score, Player][] {
+    let scores: [Score, Player][]
+    for (const player of players) {
+      scores.push([Game.calcHandValue(player.hand), player])
+    }
+    return scores
+  }
+
 
   askPlayer(player: Player, question: Question): Move {
     // TODO: implement this
@@ -141,11 +136,13 @@ export class Game {
     })
     // RUN GAME
     while (this.players.length > 1){
-      // TODO: implement this
+      // TODO: test this
+      this.playRound()
     }
   }
 
   playRound(): void {
+    this.deck.reset()
     let finalRound: boolean = false
     for (const player of this.players) {
       const ans: Move = this.askPlayer(player, {
@@ -169,15 +166,20 @@ export class Game {
 
   finishRound(): Player|void {
     // calculate hand values
-    const scores: [number, Player][] = getScores(this.players)
+    const scores: [Score, Player][] = Game.getScores(this.players)
     // find first player with lowest score
-    const firstLoser: [number, Player] = scores.reduce((prev, cur) => {
-      return prev[0] < cur[0] ? prev : cur
+    const firstLoser: [Score, Player] = scores.reduce((prev, cur) => {
+      return prev[0].value < cur[0].value ? prev : cur
     })
     // find other players with the same score
     let losers: Player[]
     for (const score of scores){
       if (score[0] === firstLoser[0]) {
+        // TODO:
+        // - multiple ppl have same value
+        // -> determine higher suit
+        // - multiple ppl have same value in same suit
+        // -> determine highest card-value
         losers.push(score[1])
       }
     }

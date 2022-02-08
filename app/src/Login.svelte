@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import Card from '@smui/card'
   import Button from '@smui/button'
   import Textfield from '@smui/textfield'
@@ -42,7 +42,7 @@
 
 
 <Card padded style="margin: auto;">
-  <LayoutGrid 
+  <LayoutGrid
   >
 
 {#if !$loggedIn}
