@@ -5,6 +5,8 @@
 	import DudeCard from "./dude-praise.svelte"
 	import ShowCase from "./card_showcase.svelte"
   import PlayingCard from "./deckapi/Card.svelte"
+  import Hand from "./deckapi/Hand.svelte"
+  import Card from "@smui/card";
   import { Deck } from "./deckapi/deck"
   import { Player, Game } from "./knack"
   import { writable } from "svelte/store"
@@ -19,18 +21,6 @@
 		bg_pos = `background-position: ${x}px ${y}px`
 	}
 
-  // test playingcard-deck
-  let testCard = writable()
-  const cardDeck = new Deck("deck32")
-  async function randomCards() {
-    while (true) {
-      testCard.set(cardDeck.safeDrawCard())
-      await new Promise(r => setTimeout(r, 2000))
-    }
-  }
-
-  randomCards()
-
   // test handvalue-calculation
   const players: Player[] = [
     new Player("p1"), new Player("p2"), new Player("p3")
@@ -39,7 +29,8 @@
   game.setup()
   console.log(game)
   console.log(game.players[0].hand)
-  console.log(Game.calcHandValue(game.players[0].hand))
+  console.log(Game.calcHandValue(game.tableCards))
+  console.log()
 
 
 </script>
@@ -68,9 +59,13 @@
 
 <main>
   <div on:mousemove={handleMouse} style={bg_pos} class="bg" id="bgimg">
-    <DudeCard/>
-    <Login />
-    <PlayingCard card={testCard} />
-    <ShowCase/>
+    <!--<DudeCard/>-->
+    <!--<Login />-->
+    <div style="display: flex; flex-direction: column; margin-left: 50px; margin-top: 50px">
+      <Hand hand={game.players[0].hand}/>
+      <Hand hand={game.players[1].hand}/>
+      <Hand hand={game.players[2].hand}/>
+      <Hand hand={game.tableCards}/>
+    </div>
   </div>
 </main>

@@ -7,7 +7,7 @@
   export let suit: string = "Hearts"
   export let card: PlayingCard
 
-  const playingCard = card || writable(new PlayingCard(value, Suit[suit]))
+  const playingCard = writable(card || new PlayingCard(value, Suit[suit]))
 
 </script>
 
