@@ -3,15 +3,14 @@
   import { Game } from "../knack"
   import PlayingCard from "./Card.svelte"
   export let hand
+  export let scale
+  export let hidden = false
+  const score = Game.calcHandValue(hand)
 </script>
 
 
-<div style="display: flex; flex-direction: row">
-  <PlayingCard card={hand[0]} ></PlayingCard>
-  <PlayingCard card={hand[1]} ></PlayingCard>
-  <PlayingCard card={hand[2]} ></PlayingCard>
-  <Card><p style="font-size: 30pt">
-  {Game.calcHandValue(hand).value}<br>
-  {Game.calcHandValue(hand).suit}
-  </p></Card>
+<div style="display: flex; flex-direction: row;">
+  {#each hand as card}
+    <PlayingCard card={card} scale={scale} hidden={hidden}></PlayingCard>
+  {/each}
 </div>
