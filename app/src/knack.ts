@@ -27,6 +27,7 @@ export class Player {
   private _hand: PlayingCard[] = []
   public knack: boolean = false
   public lives: number = 4
+  public closedHand: boolean = false
 
   constructor(public user: any /*gun.user*/) {}
 
@@ -92,7 +93,7 @@ export class Game {
   }
 
   public static getScores(players: Player[]): [Score, Player][] {
-    let scores: [Score, Player][]
+    let scores: [Score, Player][] = []
     for (const player of players) {
       scores.push([Game.calcHandValue(player.hand), player])
     }
@@ -100,10 +101,12 @@ export class Game {
   }
 
 
-  askPlayer(player: Player, question: Question): Move {
+  askPlayer(player: Player, question: Question): Question {
     // TODO: implement this
     // Base Case
-    return question.default
+    question.a = question.default
+    // mutate state according to answer
+    return question
   }
 
   setup(): void {
@@ -144,8 +147,8 @@ export class Game {
   playRound(): void {
     this.deck.reset()
     let finalRound: boolean = false
-    for (const player of this.players) {
-      const ans: Move = this.askPlayer(player, {
+    for (const player of this.players) { // TODO: this should be a `while-loop`
+      const ans: Question = this.askPlayer(player, {
         "q": "What do you want to do?",
         "a": null, // insert gun.js here
         "default": Move.CloseHand
@@ -155,11 +158,7 @@ export class Game {
         this.finishRound()
         break
       }
-      // handle players closing their hand
-      if (finalRound) break
-      if (ans === Move.CloseHand) {
-        finalRound = true
-      }
+      // TODO: handle players closing their hand
     }
     this.finishRound()
   }
@@ -172,7 +171,7 @@ export class Game {
       return prev[0].value < cur[0].value ? prev : cur
     })
     // find other players with the same score
-    let losers: Player[]
+    let losers: Player[] = []
     for (const score of scores){
       if (score[0] === firstLoser[0]) {
         // TODO:
@@ -184,7 +183,7 @@ export class Game {
       }
     }
     // subtract lives from losers
-    let killlist: Player[]
+    let killlist: Player[] = []
     for (const loser of losers) {
       loser.lives -= 1
       if (loser.lives === 0) {

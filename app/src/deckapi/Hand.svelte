@@ -3,7 +3,7 @@
   import { Game } from "../knack"
   import PlayingCard from "./Card.svelte"
   export let hand
-  export let scale
+  export let scale = 1
   export let hidden = false
   const score = Game.calcHandValue(hand)
 </script>
